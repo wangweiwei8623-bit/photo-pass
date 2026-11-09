@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>报名照 / 论文排版 · 先看卡在哪一步</title>
+<meta name="description" content="报名照被退回、教资四六级考研规格、论文排版被打回，按问题直接看对应的那篇。照片在手机本地处理，原图不上传。">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#0f1115;color:#e8eaed;padding:22px;box-sizing:border-box}
+  .box{max-width:460px;width:100%}
+  h1{font-size:20px;margin:0 0 6px}
+  p.s{color:#9aa0a6;font-size:13px;margin:0 0 18px}
+  a.b{display:block;padding:13px 16px;border-radius:10px;background:#1b2434;color:#e8eaed;
+      text-decoration:none;font-weight:600;margin-bottom:10px;border:1px solid #2a3446}
+  a.b:active{transform:scale(.995)}
+  a.b span{display:block;font-weight:400;font-size:12px;color:#9aa0a6;margin-top:3px}
+  .go{display:block;padding:14px;border-radius:10px;background:#2f6bff;color:#fff;text-align:center;
+      text-decoration:none;font-weight:700;margin:16px 0 10px}
+  .tip{font-size:12px;color:#6b7280;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>先看你的问题在哪一步</h1>
+  <p class="s" id="sub">照片在你自己手机里处理，原图不上传服务器。</p>
+
+  <a class="b" id="auto" href="shenhe.html">照片已经被退回？<span>三种原因挨个排，十分钟能救</span></a>
+
+  <a class="b" href="jiaozi.html">教资报名照规格<span>295×413，但有的省不是这个数</span></a>
+  <a class="b" href="cet.html">四六级照片<span>144×192 或 240×320，30KB 怎么压</span></a>
+  <a class="b" href="kaoyan.html">考研 / 政审照片<span>美颜必挂，一寸二寸换算</span></a>
+  <a class="b" href="lunwen.html">论文排版被打回<span>目录、页眉、参考文献三处</span></a>
+
+  <p class="tip">私信发我「省份 + 考试 + 图多大 KB」，我告诉你这个省要什么数。<br>发我看看，我帮你看卡在哪。</p>
+</div>
+<script>
+(function () {
+  // 按渠道码把访客送到最相关的那一篇；以后落地页换了，只改这里的 TARGET
+  var MAP = {
+    gh00: 'index.html', gh01: 'jiaozi.html', gh02: 'cet.html',
+    gh03: 'kaoyan.html', gh04: 'shenhe.html', gh05: 'lunwen.html',
+    tb01: 'shenhe.html', tb02: 'cet.html', xhs01: 'shenhe.html', xhs02: 'cet.html',
+    zh01: 'shenhe.html', bili01: 'shenhe.html', qq01: 'shenhe.html',
+    db01: 'shenhe.html', wb01: 'shenhe.html', xy01: 'shenhe.html',
+    dy01: 'shenhe.html', wx01: 'shenhe.html', zd01: 'shenhe.html', py01: 'shenhe.html',
+    js01: 'lunwen.html', sh01: 'lunwen.html', wy01: 'lunwen.html',
+    bz01: 'lunwen.html', qz01: 'lunwen.html', ks01: 'lunwen.html', v201: 'lunwen.html'
+  };
+  try {
+    var s = (new URLSearchParams(location.search).get('s') || '').toLowerCase();
+    var t = MAP[s];
+    if (t) {
+      // 自动跳转，但保留手点的入口（防 JS 被拦）
+      var a = document.getElementById('auto');
+      a.href = t;
+      var timer = setTimeout(function () { location.replace(t + '?s=' + encodeURIComponent(s)); }, 350);
+      // 用户一旦动手点，就不再自动跳
+      a.addEventListener('click', function () { clearTimeout(timer); });
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
